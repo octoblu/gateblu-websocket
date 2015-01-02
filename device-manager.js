@@ -1,4 +1,5 @@
 var util = require('util');
+var _ = require('lodash');
 var EventEmitter = require('events').EventEmitter;
 var debug     = require('debug')('gateblu:deviceManager');
 var DeviceSocketClient = require('./device-socket-client');
