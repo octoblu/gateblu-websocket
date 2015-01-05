@@ -4,7 +4,7 @@ node_js:
 before_deploy:
 - npm install ws browserify
 - mkdir deploy
-- node_modules/.bin/browserify -s Connector connector.js > deploy/gateblu-websocket.js
+- node_modules/.bin/browserify -s GatebluWebsocket index.js > deploy/gateblu-websocket.js
 deploy:
   provider: s3
   access_key_id: AKIAIT4X4NDGM2WVL6VA
