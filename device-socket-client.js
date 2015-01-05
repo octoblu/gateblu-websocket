@@ -1,7 +1,7 @@
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 
-var net = require('net');
+var net = require('net-browserify');
 var when = require('when');
 var _ = require('lodash');
 var uuid = require('node-uuid');
