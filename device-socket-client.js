@@ -59,7 +59,7 @@ var DeviceSocketClient = function(config) {
   sendMessage = function(name, data, callback ) {
     var message = { name: name, id: uuid.v4(), data: data};
     connPromise.then(function(conn){
-      conn.write(JSON.stringify(message));
+      conn.send(JSON.stringify(message));
       if(callback) {
         messageCallbacks[message.id] = callback;
       }
