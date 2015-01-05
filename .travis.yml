@@ -1,7 +1,20 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 before_deploy:
-  - npm install ws browserify
-  - mkdir deploy
-  - node_modules/.bin/browserify -s Connector connector.js > deploy/gateblu-websocket.js
+- npm install ws browserify
+- mkdir deploy
+- node_modules/.bin/browserify -s Connector connector.js > deploy/gateblu-websocket.js
+deploy:
+  provider: s3
+  access_key_id: AKIAIT4X4NDGM2WVL6VA
+  secret_access_key:
+    secure: Q/IqnG/MymYoe7/20mZx58zIAROmht7nJvhLW2U+QGhp+Nq/7n0Fs0g9wKVbKKxTBNdN8KkBCjHZwabYrE3Ot+CyYDZosi/L8ZW2bDy7Nk501r2gjsmJD/PCCBZuJV0a+k+94muGqw9a2ce0ZzgQlNrHoOz351HH+eEnYP47r+M=
+  bucket: gateblu
+  region: us-west-2
+  skip_cleanup: true
+  local-dir: deploy
+  upload-dir: javascript
+  on:
+    tags: true
+    all_branches: true
