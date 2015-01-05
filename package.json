@@ -1,6 +1,6 @@
 {
   "name": "gateblu-websocket",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,10 +21,10 @@
     "debug": "^2.1.1",
     "gateblu": "~3.0.0",
     "lodash": "^2.4.1",
-    "net-browserify": "^0.1.6",
     "node-uuid": "^1.4.2",
     "uuid": "^2.0.1",
-    "when": "^3.6.4"
+    "when": "^3.6.4",
+    "ws": "^0.6.5"
   },
   "optionalDependencies": {
     "commander": "^2.3.0"

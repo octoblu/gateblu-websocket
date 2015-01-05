@@ -1,10 +1,10 @@
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 
-var net = require('net-browserify');
 var when = require('when');
 var _ = require('lodash');
 var uuid = require('node-uuid');
+var WebSocket = require('ws');
 
 var DeviceSocketClient = function(config) {
   var self = this;
@@ -12,14 +12,22 @@ var DeviceSocketClient = function(config) {
   var sendMessage, routeMessage;
 
 	var connPromise = when.promise(function(resolve, reject){
-  	var conn = net.connect({host: config.host, port: config.port}, function(){
-  		conn.on('data', routeMessage);
+    var conn = new WebSocket('ws://' + config.host + ':' + config.port);
+    if (!conn.on) {
+      conn.on = conn.addEventListener;
+    }
+
+    conn.on('open', function(){
       resolve(conn);
-		});
+    });
+  // 	var conn = net.connect({host: config.host, port: config.port}, function(){
+  // 		conn.on('data', routeMessage);
+  //     resolve(conn);
+		// });
   });
 
   connPromise.catch(function(error){
-    console.error("DeviceSocketClient error: " + error);
+    console.error("DeviceSocketClient error: ");
     console.error(error.message);
     console.error(error.stack);
   });
