@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - '0.10'
+before_deploy:
+  - npm install ws browserify
+  - mkdir deploy
+  - node_modules/.bin/browserify -s Connector connector.js > deploy/gateblu-websocket.js
