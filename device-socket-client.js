@@ -15,7 +15,13 @@ var DeviceSocketClient = function(config) {
   	var conn = net.connect({host: config.host, port: config.port}, function(){
   		conn.on('data', routeMessage);
       resolve(conn);
-		});    
+		});
+  });
+
+  connPromise.catch(function(error){
+    console.error("DeviceSocketClient error: " + error);
+    console.error(error.message);
+    console.error(error.stack);
   });
 
   self.getOptions = function(callback) {
@@ -55,7 +61,7 @@ var DeviceSocketClient = function(config) {
 
   routeMessage = function(message) {
     message = JSON.parse(message);
-    
+
     if(messageCallbacks[message.id]) {
       messageCallbacks[message.id](message.data);
       delete messageCallbacks[message.id];
