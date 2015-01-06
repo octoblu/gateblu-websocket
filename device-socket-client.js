@@ -20,6 +20,16 @@ var DeviceSocketClient = function(config) {
     conn.on('open', function(){
       resolve(conn);
     });
+
+    conn.on('message', function(message){
+      var data = JSON.parse(message.data);
+      var callback = messageCallbacks[data.id];
+      if(!callback){
+        return;
+      }
+      delete messageCallbacks[data.id];
+      callback(null, data);
+    });
   // 	var conn = net.connect({host: config.host, port: config.port}, function(){
   // 		conn.on('data', routeMessage);
   //     resolve(conn);
@@ -63,7 +73,6 @@ var DeviceSocketClient = function(config) {
       if(callback) {
         messageCallbacks[message.id] = callback;
       }
-
     });
   };
 
