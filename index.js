@@ -1,4 +1,2 @@
-module.exports = {
-  DeviceManager: require('./device-manager'),
-  Gateblu: require('gateblu')
-}
+require('coffee-script/register');
+module.exports = require('./index.coffee');
