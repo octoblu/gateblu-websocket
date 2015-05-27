@@ -1,4 +1,4 @@
-Gateblu                   = require 'gateblu'
+Gateblu                   = require 'gateblu/index.coffee'
 DeviceManagerSocketClient = require './device-manager-socket-client'
 
 class GatebluWebsocket
@@ -9,4 +9,4 @@ class GatebluWebsocket
     deviceManager.connect =>
       new Gateblu @options, deviceManager
 
-module.export = GatebluWebsocket
+module.exports = GatebluWebsocket

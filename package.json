@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node command.js",
+    "start": "node index.js",
     "test": "exit 0"
   },
   "repository": {
@@ -28,7 +28,9 @@
     "ws": "^0.6.5"
   },
   "devDependencies": {
+    "browserify": "^10.2.1",
     "chai": "^2.3.0",
+    "coffeeify": "^1.1.0",
     "mocha": "^2.2.5",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0"
