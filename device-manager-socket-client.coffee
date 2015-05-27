@@ -2,10 +2,10 @@ uuid      = require 'node-uuid'
 WebSocket = require 'ws'
 
 class DeviceManagerSocketClient
-  constructor: (options={}) ->
+  constructor: (@options={}) ->
 
   connect: (callback=->) =>
-    @connection = new WebSocket "ws://#{options.host}:#{options.port}"
+    @connection = new WebSocket "ws://#{@options.host}:#{@options.port}"
     @connection.once 'open', callback
 
   addDevice: (data, callback=->) =>
