@@ -25,8 +25,8 @@ class DeviceManagerSocketClient
     @messageCallbacks[message.id]?(message.data)
     delete @messageCallbacks[message.id]
 
-  sendMessage: (name, data, callback=->) =>
-    message = {name: name, id: uuid.v4(), data: data}
+  sendMessage: (action, data, callback=->) =>
+    message = {action: action, id: uuid.v4(), data: data}
     @connection.send JSON.stringify message
     @messageCallbacks[message.id] = callback
 
