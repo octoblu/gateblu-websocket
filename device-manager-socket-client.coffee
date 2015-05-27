@@ -6,8 +6,10 @@ class DeviceManagerSocketClient
 
   connect: (callback=->) =>
     @connection = new WebSocket "ws://#{@options.host}:#{@options.port}"
-    @connection.onopen = callback unless window.on?
-    @connection.on 'open', callback if window.on?
+    @connection.onopen = callback unless @connection.on?
+    @connection.onerror = => console.error 'connection error', arguments unless @connection.on?
+    @connection.on 'open', callback if @connection.on?
+    @connection.on 'error', console.error if @connection.on?
 
   addDevice: (data, callback=->) =>
     @sendMessage 'addDevice', data, callback
