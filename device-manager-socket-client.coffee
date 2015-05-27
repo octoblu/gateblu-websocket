@@ -3,6 +3,7 @@ WebSocket = require 'ws'
 
 class DeviceManagerSocketClient
   constructor: (@options={}) ->
+    @messageCallbacks = {}
 
   connect: (callback=->) =>
     @connection = new WebSocket "ws://#{@options.host}:#{@options.port}"
