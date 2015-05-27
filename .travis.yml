@@ -16,7 +16,7 @@ deploy:
   region: us-west-2
   skip_cleanup: true
   local-dir: deploy
-  upload-dir: js/latest
+  upload-dir: js
   on:
     tags: true
     all_branches: true
