@@ -16,6 +16,7 @@ deploy:
     secure: Q/IqnG/MymYoe7/20mZx58zIAROmht7nJvhLW2U+QGhp+Nq/7n0Fs0g9wKVbKKxTBNdN8KkBCjHZwabYrE3Ot+CyYDZosi/L8ZW2bDy7Nk501r2gjsmJD/PCCBZuJV0a+k+94muGqw9a2ce0ZzgQlNrHoOz351HH+eEnYP47r+M=
   bucket: octoblu-cdn
   region: us-west-2
+  detect_encoding: true
   skip_cleanup: true
   local-dir: deploy
   upload-dir: js
