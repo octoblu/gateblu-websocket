@@ -20,17 +20,17 @@ class DeviceManagerSocketClient
   addDevice: (data, callback=->) =>
     @sendMessage 'addDevice', data, callback
 
-  removeDevice: =>
+  removeDevice: (data, callback=->) =>
     @sendMessage 'removeDevice', data, callback
 
-  startDevice: =>
+  startDevice: (data, callback=->) =>
     @sendMessage 'startDevice', data, callback
 
-  stopDevice: =>
+  stopDevice: (data, callback=->) =>
     @sendMessage 'stopDevice', data, callback
 
-  onMessage: (message) =>
-    message = JSON.parse message
+  onMessage: (wholeMessage) =>
+    message = JSON.parse wholeMessage.data
     @messageCallbacks[message.id]?(message.error, message.data)
     delete @messageCallbacks[message.id]
 
