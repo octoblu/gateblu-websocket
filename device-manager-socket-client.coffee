@@ -7,10 +7,15 @@ class DeviceManagerSocketClient
 
   connect: (callback=->) =>
     @connection = new WebSocket "ws://#{@options.host}:#{@options.port}"
-    @connection.onopen = callback unless @connection.on?
-    @connection.onerror = => console.error 'connection error', arguments unless @connection.on?
-    @connection.on 'open', callback if @connection.on?
-    @connection.on 'error', console.error if @connection.on?
+
+    if @connection.on?
+      @connection.on 'open', callback
+      @connection.on 'error', console.error
+      @connection.on 'message', @onMessage
+    else
+      @connection.onopen = callback
+      @connection.onerror = => console.error 'connection error', arguments
+      @connection.onmessage = @onMessage
 
   addDevice: (data, callback=->) =>
     @sendMessage 'addDevice', data, callback
@@ -24,9 +29,9 @@ class DeviceManagerSocketClient
   stopDevice: =>
     @sendMessage 'stopDevice', data, callback
 
-  callCallback: =>
+  onMessage: (message) =>
     message = JSON.parse message
-    @messageCallbacks[message.id]?(message.data)
+    @messageCallbacks[message.id]?(message.error, message.data)
     delete @messageCallbacks[message.id]
 
   sendMessage: (action, data, callback=->) =>

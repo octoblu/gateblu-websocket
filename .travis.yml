@@ -6,6 +6,9 @@ before_deploy:
 - mkdir -p deploy/gateblu-websocket/$TRAVIS_TAG
 - node_modules/.bin/browserify -t coffeeify --extension=".coffee" -s GatebluWebsocket index.coffee > deploy/gateblu-websocket/latest/gateblu-websocket.js
 - cp deploy/gateblu-websocket/latest/gateblu-websocket.js deploy/gateblu-websocket/$TRAVIS_TAG/gateblu-websocket.js
+- gzip deploy/gateblu-websocket/latest/gateblu-websocket.js
+- mv deploy/gateblu-websocket/latest/gateblu-websocket.js.gz deploy/gateblu-websocket/latest/gateblu-websocket.js
+- cp deploy/gateblu-websocket/latest/gateblu-websocket.js deploy/gateblu-websocket/$TRAVIS_TAG/gateblu-websocket.js
 deploy:
   provider: s3
   access_key_id: AKIAIT4X4NDGM2WVL6VA
