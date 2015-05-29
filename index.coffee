@@ -7,6 +7,7 @@ class GatebluWebsocket
   run: =>
     deviceManager = new DeviceManagerSocketClient host: 'localhost', port: 0xD00D
     deviceManager.connect =>
-      new Gateblu @options, deviceManager
+      gateblu = new Gateblu @options, deviceManager
+      gateblu.on 'ready', deviceManager.onReady
 
 module.exports = GatebluWebsocket

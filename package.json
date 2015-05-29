@@ -1,11 +1,15 @@
 {
   "name": "gateblu-websocket",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "exit 0"
+  },
+  "browser": "index.coffee",
+  "browserify": {
+    "transform": [ "coffeeify" ]
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,7 @@
   "dependencies": {
     "coffee-script": "^1.9.2",
     "debug": "^2.1.1",
-    "gateblu": "^4.0.3",
+    "gateblu": "^4.1.0",
     "lodash": "^2.4.1",
     "node-uuid": "^1.4.2",
     "uuid": "^2.0.1",

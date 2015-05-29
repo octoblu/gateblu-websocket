@@ -29,6 +29,9 @@ class DeviceManagerSocketClient
   stopDevice: (data, callback=->) =>
     @sendMessage 'stopDevice', data, callback
 
+  onReady: (data, callback=->) =>
+    @sendMessage 'ready', data, callback
+
   onMessage: (wholeMessage) =>
     message = JSON.parse wholeMessage.data
     @messageCallbacks[message.id]?(message.error, message.data)
