@@ -11,9 +11,9 @@ before_deploy:
 - cp deploy/gateblu-websocket/latest/gateblu-websocket.js deploy/gateblu-websocket/$TRAVIS_TAG/gateblu-websocket.js
 deploy:
   provider: s3
-  access_key_id: AKIAIT4X4NDGM2WVL6VA
+  access_key_id: AKIAJH2D5IPIRHYJT5IA
   secret_access_key:
-    secure: Q/IqnG/MymYoe7/20mZx58zIAROmht7nJvhLW2U+QGhp+Nq/7n0Fs0g9wKVbKKxTBNdN8KkBCjHZwabYrE3Ot+CyYDZosi/L8ZW2bDy7Nk501r2gjsmJD/PCCBZuJV0a+k+94muGqw9a2ce0ZzgQlNrHoOz351HH+eEnYP47r+M=
+    secure: "fhNJGUgmYHbijY2lSwhQWNBTj+h4SL+xxHIv2UHfmHNe3QegTJgCTgQNri3lT/C/W7TGdMaOynLLKJwxyOIDOQVYB23NiM+tWGxR2f/0fTQ9QUKlzIAiZcTj/wkqOnWXcQYi/Y3BudAetT2tR5NARtBa3ZN3JGgeF1sZDD/Vf0g="
   bucket: octoblu-cdn
   region: us-west-2
   detect_encoding: true
