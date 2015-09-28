@@ -5,7 +5,7 @@ before_deploy:
 - npm install ws browserify coffeeify
 - mkdir -p deploy/gateblu-websocket/latest
 - mkdir -p deploy/gateblu-websocket/$TRAVIS_TAG
-- node_modules/.bin/browserify -t coffeeify -s GatebluWebsocket index.js > deploy/gateblu-websocket/latest/gateblu-websocket.js
+- node_modules/.bin/browserify --extension=".coffee" -s GatebluWebsocket index.js > deploy/gateblu-websocket/latest/gateblu-websocket.js
 - cp deploy/gateblu-websocket/latest/gateblu-websocket.js deploy/gateblu-websocket/$TRAVIS_TAG/gateblu-websocket.js
 - gzip deploy/gateblu-websocket/latest/gateblu-websocket.js
 - mv deploy/gateblu-websocket/latest/gateblu-websocket.js.gz deploy/gateblu-websocket/latest/gateblu-websocket.js
