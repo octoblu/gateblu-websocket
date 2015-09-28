@@ -1,5 +1,5 @@
 Gateblu                   = require 'gateblu/index.coffee'
-DeviceManagerSocketClient = require './device-manager-socket-client'
+DeviceManagerSocketClient = require './device-manager-socket-client.coffee'
 
 class GatebluWebsocket
   constructor: (@options={}) ->
